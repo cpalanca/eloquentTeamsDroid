@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">LaLiga</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_plantilla">PlantillaActivity</string>
+    <string name="ramos_sergio">Ramos, Sergio</string>
+    <string name="imagen_jugador">Imagen Jugador</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Preference Titles -->
+    <string name="sync_header">Sync Server Address</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Url Server</string>
+</resources>
