@@ -86,8 +86,8 @@ public class EditEquipo extends AppCompatActivity {
         if (imagen == null) {
             imageView.setImageResource(R.drawable.real_madrid);
         } else {
-            Uri imageUri = Uri.parse(imagen);
-            Glide.with(this).load(imageUri).into(imageView);
+            //Uri imageUri = Uri.parse(imagen);
+            Glide.with(this).load(imagen).into(imageView);
         }
 
         //imageView.setImageURI(Uri.parse(imagen));
@@ -113,6 +113,7 @@ public class EditEquipo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 selectImage();
+
             }
         });
 
@@ -135,29 +136,23 @@ public class EditEquipo extends AppCompatActivity {
     }
 
     private void selectImage() {
-        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Downloads.EXTERNAL_CONTENT_URI);
-        intent.setType("*/*");
+       /* Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Downloads.EXTERNAL_CONTENT_URI);
+        intent.setType("image/*");
         String[] types = {"image/*"};
         intent.putExtra(Intent.EXTRA_MIME_TYPES, types);
         startActivityForResult(intent, PHOTO_SELECTED);
+*/
 
-        Glide.with(this)
-                .load(uriImage)
-                .into(imageView);
-/*
+
         Intent getIntent = new Intent(Intent.ACTION_GET_CONTENT);
         getIntent.setType("image/*");
-
         Intent pickIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         pickIntent.setType("image/*");
-
-
         Intent chooserIntent = Intent.createChooser(getIntent, "Select Image");
         chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[]{pickIntent});
+        pickIntent.getType();
+        startActivityForResult(chooserIntent, PHOTO_SELECTED);
 
-        extension = pickIntent.getType();
-
-        startActivityForResult(chooserIntent, PHOTO_SELECTED);*/
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -168,6 +163,10 @@ public class EditEquipo extends AppCompatActivity {
             Uri uri = data.getData();
             uriImage = uri;
             saveSelectedImageInFile(uri);
+            Glide.with(this)
+                    .load(uriImage)
+                    .into(imageView);
+
         }
     }
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -200,7 +199,7 @@ public class EditEquipo extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     private File saveBitmapInFile(Bitmap bitmap) {
         nombreImg = "equipo" + LocalDateTime.now()+ ".jpg";
-        File file = new File(getFilesDir(), nombre );
+        File file = new File(getFilesDir(), nombreImg );
         FileOutputStream out = null;
         try {
             out = new FileOutputStream(file);

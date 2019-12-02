@@ -30,7 +30,7 @@ public class EquiposActivity extends AppCompatActivity {
     public EquipoViewModel viewModel;
     private EquipoViewAdapter adapter;
     private RecyclerView rvList;
-    public static final String URL_CONSTANT = "3.86.147.63";
+    public static final String URL_CONSTANT = "52.91.104.38";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
